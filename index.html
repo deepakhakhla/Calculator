@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <style>
+      body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #604f4f;
+      }
+      #calculator{
+        border: 1px #000 solid;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.2); 
+      }
+        .button {
+            width: 50px;
+            height: 50px;
+            font-size: 25px;
+            margin: 2px;
+            cursor: pointer;
+        }
+        .textview {
+            width: 217px;
+            margin: 5px;
+            font-size: 25px;
+            padding: 5px;
+        }
+        p{
+          text-align: center;
+          font-weight: bold;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="calculator">
+        <input type="text" id="result" class="textview">
+        <table>
+            <tr>
+                <td><input type="button" value="C" class="button" onclick="clean()"></td>
+                <td><input type="button" value="<" class="button" onclick="back()"></td>
+                <td><input type="button" value="/" class="button" onclick="insert('/')"></td>
+                <td><input type="button" value="*" class="button" onclick="insert('*')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="7" class="button" onclick="insert(7)"></td>
+                <td><input type="button" value="8" class="button" onclick="insert(8)"></td>
+                <td><input type="button" value="9" class="button" onclick="insert(9)"></td>
+                <td><input type="button" value="-" class="button" onclick="insert('-')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="4" class="button" onclick="insert(4)"></td>
+                <td><input type="button" value="5" class="button" onclick="insert(5)"></td>
+                <td><input type="button" value="6" class="button" onclick="insert(6)"></td>
+                <td><input type="button" value="+" class="button" onclick="insert('+')"></td>
+            </tr>
+            <tr>
+                <td><input type="button" value="1" class="button" onclick="insert(1)"></td>
+                <td><input type="button" value="2" class="button" onclick="insert(2)"></td>
+                <td><input type="button" value="3" class="button" onclick="insert(3)"></td>
+                <td rowspan=5><input type="button" value="=" class="button" style="height: 106px;" onclick="equal()"></td>
+            </tr>
+            <tr>
+                <td colspan=2><input type="button" value="0" class="button" style="width: 106px;" onclick="insert(0)"></td>
+                <td><input type="button" value="." class="button" onclick="insert('.')"></td>
+            </tr>
+        </table>
+        <p>Calculate Your Dreams</p>
+    </div>
+    <script type="text/javascript">
+        function insert(num) {
+            document.getElementById('result').value = document.getElementById('result').value+num;
+        }
+        function clean() {
+            document.getElementById('result').value = "";
+        }
+        function back() {
+            var exp = document.getElementById('result').value;
+            document.getElementById('result').value = exp.substring(0, exp.length-1);
+        }
+        function equal() {
+            var exp = document.getElementById('result').value;
+            if(exp) {
+                document.getElementById('result').value = eval(exp);
+            }
+        }
+    </script>
+</body>
+</html>
